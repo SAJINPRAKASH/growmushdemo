@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Mush | Fresh Oyster Mushrooms</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Set Inter font and configure colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Color definitions used for light/dark scheme
+                        'primary': '#1a673c',          // Main dark green (Active BG / Hover Outline / Text on light BG)
+                        'secondary': '#146337',        // Darker green (buttons/recipe section BG)
+                        'deep-contrast': '#103520',    // Deepest green (footer/mobile menu BG)
+                        'accent-bright': '#009b4d',    // Bright Accent Green (Accents)
+                        'off-white': '#f7f7f7',        // Off-White Background (HEADER BG)
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply smooth scrolling and Inter font */
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Active link styling - this class is added by JavaScript */
+        .nav-link.active-nav {
+            background-color: #1a673c; /* primary */
+            color: #ffffff; /* white text */
+            border-color: #1a673c !important; /* ensure border is also green if it exists */
+        }
+    </style>
+</head>
+<body class="bg-off-white text-gray-800">
+
+    <!-- Navbar - White background -->
+    <header class="sticky top-0 z-50 bg-off-white shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo (Image source updated - dark logo on white background) -->
+            <a href="#home" class="flex items-center cursor-pointer">
+                <img
+                    src="assets/img/grow mush g.png"
+                    alt="Grow Mush Logo"
+                    class="h-7 sm:h-8"
+                />
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-2">
+                <!-- Links: Normal text-gray-700, Hover: hover:border-primary, fixed padding/border for no layout shift -->
+                <a href="#home" id="nav-home" class="nav-link text-gray-700 hover:border-primary transition duration-300 font-medium py-1 px-3 rounded-xl border-2 border-transparent hover:border-primary">Home</a>
+                <a href="#about" id="nav-about" class="nav-link text-gray-700 hover:border-primary transition duration-300 font-medium py-1 px-3 rounded-xl border-2 border-transparent hover:border-primary">About</a>
+                <a href="#recipes" id="nav-recipes" class="nav-link text-gray-700 hover:border-primary transition duration-300 font-medium py-1 px-3 rounded-xl border-2 border-transparent hover:border-primary">Recipe</a>
+                <a href="#contact" id="nav-contact" class="nav-link text-gray-700 hover:border-primary transition duration-300 font-medium py-1 px-3 rounded-xl border-2 border-transparent hover:border-primary">Contact</a>
+                <a href="#library" id="nav-library" class="nav-link text-gray-700 hover:border-primary transition duration-300 font-medium py-1 px-3 rounded-xl border-2 border-transparent hover:border-primary">Library</a>
+            </div>
+
+            <!-- Mobile Menu Button - Dark green for visibility on white BG -->
+            <button id="mobile-menu-button" class="md:hidden text-primary focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Kept dark for contrast when opened) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-deep-contrast transition-all duration-300 ease-in-out">
+            <a href="#home" class="block py-3 px-4 text-white hover:bg-secondary hover:text-accent-bright font-medium border-b border-secondary">Home</a>
+            <a href="#about" class="block py-3 px-4 text-white hover:bg-secondary hover:text-accent-bright font-medium border-b border-secondary">About</a>
+            <a href="#recipes" class="block py-3 px-4 text-white hover:bg-secondary hover:text-accent-bright font-medium border-b border-secondary">Recipe</a>
+            <a href="#contact" class="block py-3 px-4 text-white hover:bg-secondary hover:text-accent-bright font-medium border-b border-secondary">Contact</a>
+            <a href="#library" class="block py-3 px-4 text-white hover:bg-secondary hover:text-accent-bright font-medium">Library</a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section (Home) -->
+    <section id="home" class="w-full bg-off-white py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+        <!-- Text Content -->
+        <div class="md:w-1/2">
+            <h1 class="text-6xl font-extrabold text-primary mb-4 leading-tight">
+                Fresh, Flavorful, <span class="text-accent-bright block">Farm-to-Table</span>
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Discover the pure taste of our sustainably grown oyster mushrooms. Perfect for any meal.
+            </p>
+            <a href="#recipe" class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300">
+                Explore Recipes
+            </a>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="md:w-1/2 w-full h-80 rounded-xl shadow-2xl overflow-hidden carousel-container relative">
+            
+            <!-- Slide 1 (Starts Active) -->
+            <div class="carousel-slide active" data-index="0">
+                <img src="assets/img/mockup.JPG" alt="Fresh Oyster Mushrooms 1" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-slide" data-index="1">
+                <img src="https://placehold.co/1200x800/009b4d/ffffff?text=Product+Shot+2" alt="Fresh Oyster Mushrooms 2" class="w-full h-full object-cover">
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide" data-index="2">
+                <img src="https://placehold.co/1200x800/1a673c/ffffff?text=Product+Shot+3" alt="Fresh Oyster Mushrooms 3" class="w-full h-full object-cover">
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <!-- 2. About Section (Already Light) -->
+    <section id="about" class="page-section py-16 sm:py-24 bg-off-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-primary mb-10 text-center">About Our Cultivation</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-bright">
+                    <h3 class="text-2xl font-semibold text-secondary mb-3">Sustainably Grown</h3>
+                    <p class="text-gray-600">At Grow Mush, we believe in minimal intervention and maximum flavor. Our oyster mushrooms are cultivated in controlled, clean environments using sustainable substrates. This dedication ensures every cluster is plump, fresh, and environmentally responsible.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-bright">
+                    <h3 class="text-2xl font-semibold text-secondary mb-3">Quality & Flavor</h3>
+                    <p class="text-gray-600">Oyster mushrooms are celebrated for their delicate, slightly nutty flavor and velvety texture. We harvest at the perfect moment to lock in freshness, giving you a gourmet ingredient ready to elevate any meal from a simple stir-fry to an elegant main course.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Recipe Section (Kept Dark for Separation) -->
+    <section id="recipes" class="page-section py-16 sm:py-24 bg-secondary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold mb-12 text-center text-off-white">Inspiring Mushroom Recipes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Recipe Card 1 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden text-gray-800 transform hover:scale-[1.02] transition duration-300">
+                    <img class="h-48 w-full object-cover" src="https://placehold.co/600x300/103520/ffffff?text=Creamy+Pasta" alt="Creamy Mushroom Pasta">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Creamy Oyster Pasta</h3>
+                        <p class="text-sm mb-4">A rich, easy-to-make classic that highlights the mushroom's savory depth.</p>
+                        <span class="inline-block bg-accent-bright/20 text-accent-bright text-xs font-semibold px-3 py-1 rounded-full">30 min</span>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 2 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden text-gray-800 transform hover:scale-[1.02] transition duration-300">
+                    <img class="h-48 w-full object-cover" src="https://placehold.co/600x300/103520/ffffff?text=Crispy+Tacos" alt="Mushroom Tacos">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Crispy Mushroom Tacos</h3>
+                        <p class="text-sm mb-4">The perfect vegetarian taco filling with a satisfying crisp and meaty texture.</p>
+                        <span class="inline-block bg-accent-bright/20 text-accent-bright text-xs font-semibold px-3 py-1 rounded-full">20 min</span>
+                    </div>
+                </div>
+
+                <!-- Recipe Card 3 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden text-gray-800 transform hover:scale-[1.02] transition duration-300">
+                    <img class="h-48 w-full object-cover" src="https://placehold.co/600x300/103520/ffffff?text=Mushroom+Soup" alt="Hearty Mushroom Soup">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-secondary mb-2">Hearty Mushroom Soup</h3>
+                        <p class="text-sm mb-4">Warm, comforting, and packed with nutrients. Ideal for a cool evening.</p>
+                        <span class="inline-block bg-accent-bright/20 text-accent-bright text-xs font-semibold px-3 py-1 rounded-full">45 min</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Section (Already Light) -->
+    <section id="contact" class="page-section py-16 sm:py-24 bg-off-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 class="text-4xl font-bold text-primary mb-10 text-center">Get In Touch</h2>
+            <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl border-t-4 border-secondary">
+                <form onsubmit="return handleFormSubmit(event)" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent-bright focus:border-accent-bright transition duration-200">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent-bright focus:border-accent-bright transition duration-200">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent-bright focus:border-accent-bright transition duration-200"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-secondary text-white hover:bg-deep-contrast font-bold py-3 px-6 rounded-xl transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-secondary/50">
+                        Send Message
+                    </button>
+                    <div id="contact-message" class="mt-4 text-center hidden"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Library Section (Facts and Info) -->
+    <section id="library" class="page-section py-16 sm:py-24 bg-off-white text-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-primary mb-12 text-center">The Grow Mush Library</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Fact Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-accent-bright">
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary">Nutrient Powerhouse</h3>
+                    <p class="opacity-90">Oyster mushrooms are rich in protein, B vitamins, and dietary fiber. They are also known to contain powerful antioxidants and essential minerals like potassium and iron.</p>
+                </div>
+                <!-- Fact Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-accent-bright">
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary">The Fungus Kingdom</h3>
+                    <p class="opacity-90">Did you know mushrooms are not plants? They belong to their own biological kingdom: Fungi. They play a vital role in ecosystems as decomposers, recycling nutrients back into the soil.</p>
+                </div>
+                <!-- Fact Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-accent-bright">
+                    <h3 class="text-2xl font-semibold mb-3 text-secondary">Unique Growth Cycle</h3>
+                    <p class="opacity-90">Oyster mushrooms (Pleurotus ostreatus) are one of the fastest-growing cultivated species. They thrive on agricultural waste like straw or wood, making them incredibly sustainable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Kept Dark for Finality) -->
+    <footer class="bg-deep-contrast text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-3">&copy; 2024 Grow Mush. All rights reserved.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#about" class="text-sm hover:text-accent-bright transition duration-300">Privacy Policy</a>
+                <a href="#contact" class="text-sm hover:text-accent-bright transition duration-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu, Contact Form, and Active Navigation Tracking -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Simple form submission handler (no backend needed for this static page)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const messageBox = document.getElementById('contact-message');
+            messageBox.classList.remove('hidden', 'text-red-500');
+            messageBox.classList.add('text-accent-bright');
+            messageBox.innerHTML = '<p class="font-bold">Thank you for your interest! Your message has been received (simulated).</p>';
+            event.target.reset(); // Clear the form
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000);
+            return false;
+        }
+
+        // --- Active Navigation Tracking (Intersection Observer) ---
+
+        const sections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let isScrolling = false; // Flag to prevent observer interference during a click-scroll
+
+        // Function to reset all links to inactive state
+        function resetNavLinks() {
+            // FIX: This function correctly scopes the loop to prevent the 'undefined (reading 'add')' error.
+            navLinks.forEach(l => {
+                l.classList.remove('active-nav', 'text-white', 'text-primary'); 
+                l.classList.add('text-gray-700'); 
+            });
+        }
+
+        // Options for the Intersection Observer
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: "0px 0px -60% 0px", // Use a high negative margin to trigger when section is near the top
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (isScrolling) return; // Skip updates if a click-scroll is in progress
+
+            entries.forEach(entry => {
+                const navId = `nav-${entry.target.id}`;
+                const link = document.getElementById(navId);
+
+                if (link) {
+                    if (entry.isIntersecting) {
+                        resetNavLinks(); // Clear all active states first
+                        
+                        // Add active class to the current link
+                        link.classList.add('active-nav');
+                        link.classList.remove('text-gray-700');
+                        link.classList.add('text-white'); // ensure white text
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initial setup and Click Listener
+        document.addEventListener('DOMContentLoaded', () => {
+            // Attach observer to each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Handle link clicks to prevent active state disappearance during smooth scroll
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 1. Manually set the state
+                    isScrolling = true; // Disable observer updates
+                    observer.disconnect(); // Stop observer entirely
+
+                    resetNavLinks(); // Clear all active states
+                    
+                    // Set the clicked link as active immediately
+                    this.classList.add('active-nav');
+                    this.classList.remove('text-gray-700');
+                    this.classList.add('text-white');
+
+                    // 2. Re-enable observer after scroll settles
+                    setTimeout(() => {
+                        isScrolling = false;
+                        sections.forEach(section => observer.observe(section));
+                    }, 750); // Give smooth scroll time to finish
+                });
+            });
+
+            // Set initial active link (Home) if no hash is present
+            if (!window.location.hash) {
+                const homeLink = document.getElementById('nav-home');
+                if (homeLink) {
+                    homeLink.classList.add('active-nav');
+                    homeLink.classList.remove('text-gray-700');
+                    homeLink.classList.add('text-white');
+                }
+            }
+        });
+        // Carousel Script
+const slides = document.querySelectorAll('.carousel-slide');
+let currentSlide = 0;
+const slideInterval = 4000; // 4 seconds
+
+function nextSlide() {
+    // 1. Get the current active slide
+    const current = slides[currentSlide];
+    
+    // 2. Determine the next slide index
+    currentSlide = (currentSlide + 1) % slides.length;
+    const next = slides[currentSlide];
+
+    // 3. Remove all state classes from all slides
+    slides.forEach(slide => {
+        slide.classList.remove('active', 'leaving');
+    });
+
+    // 4. Apply the 'leaving' class to the current (old) slide for animation
+    current.classList.add('leaving');
+
+    // 5. Apply the 'active' class to the next (new) slide, triggering its entrance
+    next.classList.add('active');
+}
+
+// Start the carousel loop
+setInterval(nextSlide, slideInterval);
+    </script>
+    
+</body>
+</html>
